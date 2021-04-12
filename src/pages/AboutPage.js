@@ -2,9 +2,26 @@ import React from 'react'
 import styled from 'styled-components'
 import { PageHero } from '../components'
 import aboutImg from '../assets/hero-bcg.jpeg'
+import { GiWrappedHeart } from 'react-icons/gi'
 
 const AboutPage = () => {
-  return <h4>about page</h4>
+  return (
+    <main>
+      <PageHero title='About' />
+      <Wrapper className='page section section-center'>
+        <img src={aboutImg} alt='nice desk' />
+        <article>
+          <div className="title">
+            <h2>our story</h2>
+            <div className="underline"></div>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, itaque. Deserunt, molestias aut accusantium incidunt reprehenderit architecto mollitia, ipsa nisi provident id iste harum vero asperiores recusandae distinctio error. Laborum doloribus labore laboriosam repellendus laudantium soluta rerum cum illo, aliquid, nostrum fugiat iusto! Voluptate neque cum quibusdam natus deleniti inventore.
+          </p>
+        </article>
+      </Wrapper>
+    </main>
+  )
 }
 
 const Wrapper = styled.section`
