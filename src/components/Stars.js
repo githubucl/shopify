@@ -20,8 +20,10 @@ const Stars = ({ stars = 0, reviews }) => {
 
   return (
     <Wrapper>
+      <div className="starsNum"> {stars}  </div>
       <div className="stars">
         {
+
           temStars
         }
       </div>
@@ -39,6 +41,12 @@ const Wrapper = styled.div`
     color: #ffb900;
     font-size: 1rem;
     margin-right: 0.25rem;
+  }
+  .starsNum{
+   margin-top:-0.105rem;
+    color: #ffb900;
+    margin-right:0.5rem;
+    font-size:1.1rem
   }
   p {
     margin-left: 0.5rem;

@@ -6,15 +6,16 @@ const ProductImages = ({ images = [{ url: '' }] }) => {
 
   return (
     <Wrapper>
-      <img src={main.url} alt="main" />
+      <img src={main.url} alt="main" className="main" />
       <div className="gallery">
         {images.map((image, i) => {
-          return <img src={image.url}
-            alt={image.filename}
-            key={image.id}
-            onClick={() => setMain(images[i])}
-            className={image.url === main.url ? 'active' : null}
-          />
+          return (
+            <img src={image.url}
+              alt={image.filename}
+              key={i}
+              onClick={() => setMain(images[i])}
+              className={image.url === main.url ? 'active' : null}
+            />)
         })}
       </div>
     </Wrapper>)

@@ -5,8 +5,66 @@ import { FaCheck } from 'react-icons/fa'
 import { useCartContext } from '../context/cart_context'
 import AmountButtons from './AmountButtons'
 
-const AddToCart = () => {
-  return <h4>addToCart </h4>
+const AddToCart = ({ product }) => {
+  const { id, stock, colors } = product
+  const [mainColor, setMainColor] = useState(colors[0])
+  const [amount, setAmount] = useState(1)
+
+  const decrease = () => {
+    setAmount((oldAmount) => {
+      let tempAmount = oldAmount - 1
+      if (tempAmount < 1) {
+        tempAmount = 1
+      }
+      return tempAmount
+    })
+  }
+  const increase = () => {
+    setAmount((oldAmount) => {
+      let tempAmount = oldAmount + 1
+      if (tempAmount > stock) {
+        tempAmount = stock
+      }
+      return tempAmount
+    })
+  }
+
+  return (
+    <Wrapper>
+      <div className="colors">
+        <span>color:</span>
+        <div>
+          {
+            colors.map((color, index) => {
+              return (
+                <button
+                  className={mainColor === color ? 'color-btn active' : 'color-btn'}
+                  onClick={() => {
+                    setMainColor(color)
+                  }}
+                  key={index}
+                  style={{ background: color }}
+                >
+                  {mainColor === color ? <FaCheck /> : null}
+                </button>
+              )
+            })
+          }
+        </div>
+      </div>
+      <div className="btn-container">
+        <AmountButtons
+          decrease={decrease}
+          increase={increase}
+          amount={amount}
+        />
+
+      </div>
+      <Link to='/cart' className="btn"  >
+        ADD TO CART
+      </Link>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
